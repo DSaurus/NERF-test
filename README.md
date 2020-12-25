@@ -40,89 +40,16 @@ You will also need the [LLFF code](http://github.com/fyusion/llff) (and COLMAP) 
 
 ### Quick Start
 
-Download data for two example datasets: `lego` and `fern`
+To train a `multihuman` NeRF:
 ```
-bash download_example_data.sh
+python run_nerf.py --config configs/multihuman.txt
 ```
 
-To train a low-res `lego` NeRF:
+To test the NeRF by rendering test dataset:
 ```
-python run_nerf.py --config configs/lego.txt
+python run_nerf.py --config configs/multihuman.txt --render_only --render_test
 ```
-After training for 100k iterations (~4 hours on a single 2080 Ti), you can find the following video at `logs/lego_test/lego_test_spiral_100000_rgb.mp4`.
-
-![](https://user-images.githubusercontent.com/7057863/78473103-9353b300-7770-11ea-98ed-6ba2d877b62c.gif)
-
 ---
-
-To train a low-res `fern` NeRF:
-```
-python run_nerf.py --config configs/fern.txt
-```
-After training for 200k iterations (~8 hours on a single 2080 Ti), you can find the following video at `logs/fern_test/fern_test_spiral_200000_rgb.mp4` and `logs/fern_test/fern_test_spiral_200000_disp.mp4`
-
-![](https://user-images.githubusercontent.com/7057863/78473081-58ea1600-7770-11ea-92ce-2bbf6a3f9add.gif)
-
----
-
-### More Datasets
-To play with other scenes presented in the paper, download the data [here](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1). Place the downloaded dataset according to the following directory structure:
-```
-├── configs                                                                                                       
-│   ├── ...                                                                                     
-│                                                                                               
-├── data                                                                                                                                                                                                       
-│   ├── nerf_llff_data                                                                                                  
-│   │   └── fern                                                                                                                             
-│   │   └── flower  # downloaded llff dataset                                                                                  
-│   │   └── horns   # downloaded llff dataset
-|   |   └── ...
-|   ├── nerf_synthetic
-|   |   └── lego
-|   |   └── ship    # downloaded synthetic dataset
-|   |   └── ...
-```
-
----
-
-To train NeRF on different datasets: 
-
-```
-python run_nerf.py --config configs/{DATASET}.txt
-```
-
-replace `{DATASET}` with `trex` | `horns` | `flower` | `fortress` | `lego` | etc.
-
----
-
-To test NeRF trained on different datasets: 
-
-```
-python run_nerf.py --config configs/{DATASET}.txt --render_only
-```
-
-replace `{DATASET}` with `trex` | `horns` | `flower` | `fortress` | `lego` | etc.
-
-
-### Pre-trained Models
-
-You can download the pre-trained models [here](https://drive.google.com/drive/folders/1jIr8dkvefrQmv737fFm2isiT6tqpbTbv?usp=sharing). Place the downloaded directory in `./logs` in order to test it later. See the following directory structure for an example:
-
-```
-├── logs 
-│   ├── fern_test
-│   ├── flower_test  # downloaded logs
-│   ├── trex_test    # downloaded logs
-```
-
-### Reproducibility 
-
-Tests that ensure the results of all functions and training loop match the official implentation are contained in a different branch `reproduce`. One can check it out and run the tests:
-```
-git checkout reproduce
-py.test
-```
-
 ## Method
 
 [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](http://tancik.com/nerf)  
