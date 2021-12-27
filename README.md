@@ -11,7 +11,6 @@ This project is a faithful PyTorch implementation of [NeRF](http://www.matthewta
 ## Installation
 
 ```
-git clone https://github.com/yenchenlin/nerf-pytorch.git
 cd nerf-pytorch
 pip install -r requirements.txt
 cd torchsearchsorted
@@ -29,10 +28,6 @@ cd ../
   - imageio
   - imageio-ffmpeg
   - configargparse
-  
-The LLFF data loader requires ImageMagick.
-
-You will also need the [LLFF code](http://github.com/fyusion/llff) (and COLMAP) set up to compute poses if you want to run on your own real data.
   
 </details>
 
